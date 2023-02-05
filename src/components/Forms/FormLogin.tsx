@@ -19,7 +19,7 @@ type Props = {
 }
 
 const validationFormLogin = Yup.object().shape({
-  email: Yup.string().email().required('Email é requerido'),
+  email: Yup.string().email('Email inválido').required('Email é requerido'),
   password: Yup.string().required('Senha é requerida'),
 })
 

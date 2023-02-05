@@ -21,7 +21,7 @@ type Props = {
 
 const validationFormLogin = Yup.object().shape({
   name: Yup.string().required('Nome é requerido'),
-  email: Yup.string().email().required('Email é requerido'),
+  email: Yup.string().email('Email inválido').required('Email é requerido'),
   password: Yup.string().required('Senha é requerida'),
 })
 
@@ -31,9 +31,7 @@ export const FormRegister: React.FC<Props> = ({ onSubmit, onClickRegister }) => 
   const onSubmitForm = useCallback(
     async (data: FormLoginData) => {
       const invalid = await validateFormData(validationFormLogin, data, formRef.current)
-      if (!invalid) {
-        if (onSubmit) onSubmit(data)
-      }
+      if (!invalid) if (onSubmit) onSubmit(data)
     },
     [onSubmit],
   )
@@ -52,9 +50,8 @@ export const FormRegister: React.FC<Props> = ({ onSubmit, onClickRegister }) => 
         <Label htmlFor='input-password'>Password</Label>
         <UnformInput name='password' type='password' />
       </FormGroup>
-
       <FormGroup mt={'1rem'} justify='center' gap={1.5}>
-        <Button type='submit'>Login</Button>
+        <Button type='submit'>Cadastrar</Button>
         <Button type='button' onClick={onClickRegister}>
           Já tenho conta
         </Button>
