@@ -1,15 +1,20 @@
-import React from 'react'
-import { Container } from './styles'
-import { Text } from 'components/Common'
+import React, { CSSProperties } from 'react'
+import { Container, Divider } from './styles'
+import { FlexContainer, Title } from 'components/Common'
+import { BoxProps } from 'components/Common/types'
 
-type Props = {
-  // title: string
+type Props = BoxProps & {
+  title?: string
+  textAlign?: CSSProperties['justifyContent']
+  children: React.ReactNode
 }
 
-export const Card: React.FC<Props> = () => {
+export const Card: React.FC<Props> = ({ title, children, textAlign = 'flex-start', ...rest }) => {
   return (
-    <Container>
-      <Text>Teste</Text>
+    <Container {...rest}>
+      <FlexContainer justify={textAlign}>{title && <Title>{title}</Title>}</FlexContainer>
+      <Divider />
+      {children}
     </Container>
   )
 }

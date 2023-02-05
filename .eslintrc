@@ -36,6 +36,7 @@
       "warn"
     ],
 
+    "react/display-name": ["off"],
     "prettier/prettier": [
       "warn",
       {

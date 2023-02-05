@@ -7,7 +7,10 @@ export const GlobalStyles = createGlobalStyle`
     outline: none;
     box-sizing: border-box;
     font-family: Roboto, sans-serif;
-    transition: all ease .5s;
+    -webkit-appearance: none;
+  }
+
+  input {
   }
 
 
